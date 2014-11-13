@@ -16,8 +16,8 @@ class CreateCandidatosTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string("url");
-			$table->text("description");
-			$table->enum("tipo,trabajo", ['tiempo_completo', 'parcial']);
+			$table->text("descripcion");
+			$table->enum("tipo_trabajo", ['tiempo_completo', 'parcial']);
 			$table->integer("id_categoria")->unsigned();
 			$table->boolean('disponible');
 			$table->string("slugs");

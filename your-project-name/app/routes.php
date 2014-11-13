@@ -20,7 +20,9 @@ Route::get('/', function()
 
 Route::get('/', ['as' =>'home', 'uses' =>'HomeController@index']);
 
-Route::get('candidatos/{slug}/{id}', ['as' =>'category', 'uses' =>'CandidatoController@category']);
+Route::get('candidatos/{slug}/{id}', ['as' =>'categoria', 'uses' =>'CandidatoController@categoria']);
+Route::get('candidatos/{slug}/{id}', ['as' =>'categoria', 'uses' =>'CandidatoController@categoria']);
+
 /*
 Route::get('welcome', function() {
    return 'Bienvenidos a Laravel';

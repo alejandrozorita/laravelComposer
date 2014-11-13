@@ -9,9 +9,9 @@ class CandidatoController extends  BaseController {
 	public function __construct(CategoriaRepo $categoriaRepo) {
 		$this->categoriaRepo = $categoriaRepo;
 	}
-	public function category($slug, $id) {
+	public function categoria($slug, $id) {
 		$categoria = $this->categoriaRepo->find($id);
-		//dd($categoria);
-		return  View;
+	//	dd($categoria);
+		return  View::make('candidato/categoria', compact('categoria'));
 	}
 }
