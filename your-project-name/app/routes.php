@@ -20,6 +20,8 @@ Route::get('/', function()
 
 Route::get('/', ['as' =>'home', 'uses' =>'HomeController@index']);
 
+Route::get('candidatos/{slug}/{id}', ['as' =>'category', 'uses' =>'CandidatoController@category']);
+/*
 Route::get('welcome', function() {
    return 'Bienvenidos a Laravel';
 });
@@ -27,6 +29,7 @@ Route::get('welcome', function() {
 Route::get('consultaclick', function() {
 	return Redirect::to('http://www.consultaclick.es');
 });
+
 Route::get('hola', function() {
 	View::make(‘welcome’)->with(‘name’, ‘Duilio’);
-}); 
+}); */

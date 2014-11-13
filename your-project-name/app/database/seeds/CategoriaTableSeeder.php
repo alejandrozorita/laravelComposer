@@ -1,7 +1,9 @@
 <?php
 
+use intranet\Entities\Categoria;
+
 // Composer: "fzaninotto/faker": "v1.3.0"
-use Faker\Factory as Faker;
+//use Faker\Factory as Faker;
 
 class CategoriaTableSeeder extends Seeder {
 

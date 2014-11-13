@@ -11,10 +11,12 @@
 		"barryvdh/laravel-debugbar": "1.*"
 	},
 	"autoload": {
+		"psr-4": {
+			"intranet\\": "app/intranet"
+		},
 		"classmap": [
 			"app/commands",
 			"app/controllers",
-			"app/models",
 			"app/database/migrations",
 			"app/database/seeds",
 			"app/tests/TestCase.php"
