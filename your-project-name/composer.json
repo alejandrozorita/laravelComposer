@@ -5,7 +5,8 @@
 	"license": "MIT",
 	"require-dev": {
     "way/generators": "2.*",
-    "barryvdh/laravel-debugbar": "1.*"
+    "barryvdh/laravel-debugbar": "1.*",
+    "fzaninotto/faker": "v1.3.0"
 	},
 	"require": {
 		"laravel/framework": "4.2.*"

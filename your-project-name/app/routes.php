@@ -20,8 +20,11 @@ Route::get('/', function()
 
 Route::get('/', ['as' =>'home', 'uses' =>'HomeController@index']);
 
-Route::get('candidatos/{slug}/{id}', ['as' =>'categoria', 'uses' =>'CandidatoController@categoria']);
-Route::get('candidatos/{slug}/{id}', ['as' =>'categoria', 'uses' =>'CandidatoController@categoria']);
+//Ruta a categoría
+Route::get('candidates/{slug}/{id}', ['as' =>'category', 'uses' =>'CandidatesController@category']);
+
+//Ruta a candidato
+Route::get('{slug}/{id}', ['as' =>'candidate', 'uses' =>'CandidatesController@show']);
 
 /*
 Route::get('welcome', function() {

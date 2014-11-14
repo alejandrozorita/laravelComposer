@@ -1,9 +1,6 @@
-@extends('layout')
-@section('content')
-<!-- Main jumbotron for a primary marketing message or call to action -->
-  <h1 class="sub-header">Últimos empleados</h1>
- 			@foreach ($latest_candidates as $category)
- 			<h1>{{$category->name}}</h1>
+@extends('candidates/show')
+@section('content')          
+          <h2 class="sub-header">{{ $category->name }}</h2>
           <div class="table-responsive">
             <table class="table table-striped table-hover">
               <thead>
@@ -15,7 +12,7 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($category->candidates as $candidate)
+                 @foreach ($category->paginate_candidates as $candidate)
                 <tr>
                   <td>{{$candidate->user->full_name}}</td>
 	                <td>{{ $candidate->job_type_title }}</td>
@@ -25,8 +22,6 @@
 				@endforeach
               </tbody>
             </table>
-            <p><a href="{{ route('category', [$category->slug, $category->id]) }}">Ver Todos los empleados de </a></p>
+            {{$category->paginate_candidates->links()}}
           </div>
-          @endforeach
-          
-@stop
+          @stop
