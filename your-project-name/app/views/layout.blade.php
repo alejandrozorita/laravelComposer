@@ -44,8 +44,8 @@
             <div class="form-group">
               <input type="password" placeholder="Password" class="form-control">
             </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
           </form>
+          <a href="{{route ('sign-up') }}" type="submit" class="btn btn-primary btn-lg">Sign in</a>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>

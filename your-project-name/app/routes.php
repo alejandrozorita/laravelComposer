@@ -26,6 +26,12 @@ Route::get('candidates/{slug}/{id}', ['as' =>'category', 'uses' =>'CandidatesCon
 //Ruta a candidato
 Route::get('{slug}/{id}', ['as' =>'candidate', 'uses' =>'CandidatesController@show']);
 
+//Registro Usuarios
+Route::get('sign-up', ['as' =>'sign-up', 'uses' =>'UserController@signUp']);
+
+//Registro Usuarios
+Route::post('sign-up', ['as' =>'register', 'uses' =>'UserController@register']);
+
 /*
 Route::get('welcome', function() {
    return 'Bienvenidos a Laravel';
