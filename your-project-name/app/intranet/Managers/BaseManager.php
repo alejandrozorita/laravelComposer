@@ -15,7 +15,7 @@ abstract class BaseManager {
     public function __construct($entity, $data)
     {
         $this->entity = $entity;
-        $this->data = array_only($data, array_keys(($this->getRules)));
+        $this->data = array_only($data, array_keys($this->getRules()));
     }
 
     //Cuando extiendes esta clase, este metodo no se hereda por lo que hay que ponerlo obligatoriamente
@@ -27,11 +27,14 @@ abstract class BaseManager {
      */
     public function isValid()
     {
-        $rules = $this->getRules;
+        $rules = $this->getRules();
+
         $validation = \Validator::make($this->data, $rules);
 
         $isValid = $validation->passes();
-        $this->errors = $validation->massage;
+
+        $this->errors = $validation->messages();
+
         return $isValid;
 
     }
@@ -43,11 +46,11 @@ abstract class BaseManager {
 
     public function save()
     {
-        if (! $this->isValid)
+        if (! $this->isValid())
             return false;
 
         $this->entity->fill($this->data);
-        $this->entity-save();
+        $this->entity->save();
         return true;
 
     }

@@ -27,7 +27,7 @@ class CandidateRepo extends BaseRepo{
     public function newCandidate()
     {
         $user = new User();
-        $user->type = 'candidate';
+        $user->user_type = 'candidate';
         return $user;
     }
 
