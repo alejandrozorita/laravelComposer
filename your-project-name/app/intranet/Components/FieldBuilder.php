@@ -11,10 +11,7 @@ class FieldBuilder {
 
     protected $defaultClass = [
         'default' => 'form-control',
-        'checkbox' => '',
-        'default' => '',
-        'default' => '',
-        'default' => ''
+        'checkbox' => ''
     ];
 
     public function getDefaultClass($type)
@@ -42,7 +39,7 @@ class FieldBuilder {
     }
 
 
-    public function buildLablel($name)
+    public function buildLabel($name)
     {
         if(\Lang::has('validation.attributes.' . $name))
         {
@@ -50,42 +47,61 @@ class FieldBuilder {
         }
         else
         {
-            $label = (str_replace('_', ' ', $name));
+            $label = str_replace('_', ' ', $name);
         }
 
         return ucfirst($label);
 
     }
 
-    public function buildControl($type, $name, $value = null, $attribures = array(), $option = array())
+    public function buildControl($type, $name, $value = null, $attributes = array(), $option = array())
     {
         switch ($type)
         {
             case 'select':
-                return \Form::select($name, $options, $value, $attributes);
+                return \Form::select($name, $option, $value, $attributes);
             case 'password':
                 return \Form::password($name, $attributes);
             case 'checkbox':
                 return \Form::checkbox($name);
             default:
-                return \Form::select($type, $name, $value, $attributes);
+                return \Form::input($type, $name, $value, $attributes);
         }
     }
 
     public function buildError($name)
     {
+        $error = null;
+        if(\Session::has ('errors'))
+        {
+            $errors = \Session::get('errors');
+
+            if($errors->has($name))
+            {
+                $error = $error->first($name);
+            }
+        }
+        return $error;
 
     }
 
-    public function buildTemplate()
+    /**
+     *
+     */
+    public function buildTemplate($type)
     {
+        if(\File::exists('app/view/fields/' . $type . '.blade.php'))
+        {
+            return'fields/' . $type;
+        }
 
+        return 'fields/default';
     }
 
     public function input($type, $name, $value = null, $attributes = array(), $options = array())
     {
         $this->buildCssClasses($type, $attributes);
-        $labe = $this->buildLablel($name);
+        $label = $this->buildLabel($name);
         $control = $this->buildControl($type, $name, $value, $attributes, $options);
         $error = $this->buildError($name);
         $template = $this->buildTemplate($type);

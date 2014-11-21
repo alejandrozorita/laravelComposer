@@ -17,7 +17,8 @@ class UserController extends BaseController {
 
 	public function signUp()
     {
-		return  View::make('users/sign-up');
+        $fieldBuilder = new intranet\Components\FieldBuilder();
+		return  View::make('users/sign-up', compact('fieldBuilder'));
 	}
 
 

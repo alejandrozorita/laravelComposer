@@ -1,10 +1,3 @@
-
-/**
- * User: AlejandroZorita
- * Date: 18/11/14
- * Time: 10:13
- */
-
 <div class="form-group">
     {{Form::label($name,$label)}}
     {{  $control }}
